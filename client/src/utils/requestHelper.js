@@ -13,9 +13,11 @@ export const callApi = async (
     'Content-Type': 'application/json',
   },
 ) => {
-  const token = sessionStorage.getItem('jwt');
+  const token = localStorage.getItem('jwt');
+  console.log(token)
   if (!token) {
-    return window.location.href='/login';
+    return window.location.href = '/login';
+    return
   }
 
   try {
@@ -24,7 +26,7 @@ export const callApi = async (
       url: `${endpoint}`,
       headers: {
         ...headers,
-        Authorization: token
+        Authorization: `Bearer ${token}`
       },
       data: body,
     })
@@ -33,8 +35,8 @@ export const callApi = async (
   } catch (error) {
     if (error.response) {
       if (error.response.status === 401 || error.response.status === 403) {
-        sessionStorage.setItem('jwt', '')
-        return window.location.href='/login'
+        localStorage.setItem('jwt', '')
+        return window.location.href = '/login'
       }
 
       const errorMessage = error.response.data.error;
@@ -52,21 +54,23 @@ export const callApiWithFile = async (
   endpoint,
   method = 'POST',
   body,
-  files,
+  files = {},
   headers = {
     'Content-Type': 'multipart/form-data',
   },
 ) => {
-  const token = sessionStorage.getItem('jwt');
+  const token = localStorage.getItem('jwt');
   if (!token) {
-    return window.location.href='/login';
+    return window.location.href = '/login';
   }
 
   try {
     const formData = new FormData();
     if (files) {
-      for (const file of files) {
-        formData.append(file.name, file, file.name)
+      for (let key in files) {
+        files[key].map(f => {
+          formData.append(key, f, f?.name);
+        });
       }
     }
     if (body) {
@@ -78,7 +82,15 @@ export const callApiWithFile = async (
       ...headers,
       Authorization: token,
     }
-    const result = await axios.post(endpoint, formData, { headers });
+    const result = await axios({
+      method,
+      url: `${endpoint}`,
+      headers: {
+        ...headers,
+        Authorization: `Bearer ${token}`
+      },
+      data: formData
+    })
     return result.data;
   } catch (error) {
     throw error;

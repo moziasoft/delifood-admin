@@ -66,7 +66,7 @@ const UploadFile = () => {
     for (const item of files) {
       formData.append(`file`, item, item.name);
     }
-    const token = sessionStorage.getItem('jwt');
+    const token = localStorage.getItem('jwt');
     if (!token) {
       return window.location.href='/login';
     }

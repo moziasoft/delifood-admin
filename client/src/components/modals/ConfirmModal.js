@@ -9,8 +9,8 @@ import {
 } from '@coreui/react'
 import PropTypes from 'prop-types'
 
-const DeleteModal = (props) => {
-  const { isOpen, setOpen, handleDelete, title } = props;
+const ConfirmModal = (props) => {
+  const { isOpen, setOpen, handleAction, title, acceptTitle, color, id, body } = props;
 
   return (
     <>
@@ -18,25 +18,29 @@ const DeleteModal = (props) => {
         <CModalHeader>
           <CModalTitle>{title || 'Delete'}</CModalTitle>
         </CModalHeader>
-        <CModalBody>
+        {/* <CModalBody>
           {title}
-        </CModalBody>
+        </CModalBody> */}
         <CModalFooter>
           <CButton color="outline-secondary" onClick={() => setOpen(false)}>
             Tắt
           </CButton>
-          <CButton color="danger" onClick={handleDelete}>Xóa</CButton>
+          <CButton color={color} onClick={() => handleAction(id, body)}>{acceptTitle}</CButton>
         </CModalFooter>
       </CModal>
     </>
   )
 }
 
-DeleteModal.propTypes = {
+ConfirmModal.propTypes = {
   isOpen: PropTypes.bool,
   setOpen: PropTypes.func,
-  handleDelete: PropTypes.func,
+  handleAction: PropTypes.func,
   title: PropTypes.string,
+  acceptTitle: PropTypes.string,
+  color: PropTypes.string,
+  id: PropTypes.string,
+  body: PropTypes.object,
 }
 
-export default DeleteModal
+export default ConfirmModal

@@ -32,10 +32,10 @@ const AppHeader = () => {
           <CIcon icon={cilMenu} size="lg" />
         </CHeaderToggler>
         <CHeaderBrand className="mx-auto d-md-none" to="/">
-          <CIcon icon={logo} height={48} alt="Logo" />
+          <img style={{ width: "180px" }} src={require("../assets/images/Logo.png")} />
         </CHeaderBrand>
         <CHeaderNav className="d-none d-md-flex me-auto">
-          <CNavItem>
+          {/* <CNavItem>
             <CNavLink to="/" component={NavLink}>
               Restaurants
             </CNavLink>
@@ -54,7 +54,7 @@ const AppHeader = () => {
             <CNavLink to="/upload" component={NavLink}>
               Keywords
             </CNavLink>
-          </CNavItem>
+          </CNavItem> */}
         </CHeaderNav>
         <CHeaderNav className="ms-3">
           <AppHeaderDropdown />

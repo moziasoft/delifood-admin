@@ -14,12 +14,14 @@ import 'simplebar/dist/simplebar.min.css'
 
 // sidebar nav config
 import navigation from '../_nav'
+import navigationAdmin from '../admin/_nav'
+import PropTypes from 'prop-types'
 
-const AppSidebar = () => {
+const AppSidebar = ({ isSuperAdmin }) => {
   const dispatch = useDispatch()
   const unfoldable = useSelector((state) => state.sidebarUnfoldable)
   const sidebarShow = useSelector((state) => state.sidebarShow)
-
+  const nav = isSuperAdmin ? navigation : navigationAdmin
   return (
     <CSidebar
       position="fixed"
@@ -32,12 +34,12 @@ const AppSidebar = () => {
       <CSidebarBrand className="d-none d-md-flex" to="/">
         {/*<CIcon className="sidebar-brand-full" icon={logoNegative} height={35} />*/}
         {/*<CIcon className="sidebar-brand-narrow" icon={sygnet} height={35} />*/}
-        <img src="https://s3.ap-southeast-1.amazonaws.com/stockdata.simcode/Stockcode-white.png" alt="StockCode"
-             className="logo__home" height={26} />
+        <img src={require("../assets/images/Logo.png")} alt="Delifood"
+          className="logo__home" height={45} />
       </CSidebarBrand>
       <CSidebarNav>
         <SimpleBar>
-          <AppSidebarNav items={navigation} />
+          <AppSidebarNav items={nav} />
         </SimpleBar>
       </CSidebarNav>
       <CSidebarToggler
@@ -46,6 +48,9 @@ const AppSidebar = () => {
       />
     </CSidebar>
   )
+}
+AppSidebar.propTypes = {
+  isSuperAdmin: PropTypes.bool
 }
 
 export default React.memo(AppSidebar)

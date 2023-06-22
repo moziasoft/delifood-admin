@@ -13,15 +13,15 @@ const _nav = [
   {
     component: CNavItem,
     name: 'Quản lý User',
-    to: '/users',
+    to: '/user',
     icon: <CIcon icon={cilUser} customClassName="nav-icon" />,
   },
-  {
-    component: CNavItem,
-    name: 'Quản lý danh mục',
-    to: '/categories',
-    icon: <CIcon icon={cilAlbum} customClassName="nav-icon" />,
-  },
+  // {
+  //   component: CNavItem,
+  //   name: 'Quản lý danh mục',
+  //   to: '/categories',
+  //   icon: <CIcon icon={cilAlbum} customClassName="nav-icon" />,
+  // },
   {
     component: CNavItem,
     name: 'Quản lý từ khóa',

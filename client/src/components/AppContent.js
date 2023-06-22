@@ -1,16 +1,19 @@
 import React, { Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { CContainer, CSpinner } from '@coreui/react'
+import PropTypes from 'prop-types'
 
 // routes config
 import routes from '../routes'
+import routesAdmin from '../admin/routes'
 
-const AppContent = () => {
+const AppContent = ({ isSuperAdmin }) => {
+  const rs = isSuperAdmin ? routes : routesAdmin;
   return (
     <CContainer lg>
       <Suspense fallback={<CSpinner color="primary" />}>
         <Routes>
-          {routes.map((route, idx) => {
+          {rs.map((route, idx) => {
             return (
               route.element && (
                 <Route
@@ -28,6 +31,9 @@ const AppContent = () => {
       </Suspense>
     </CContainer>
   )
+}
+AppContent.propTypes = {
+  isSuperAdmin: PropTypes.bool
 }
 
 export default React.memo(AppContent)

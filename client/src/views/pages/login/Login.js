@@ -35,9 +35,8 @@ const Login = () => {
         data: { username, password },
       });
 
-      console.log(result)
       if (result?.data?.body?.token) {
-        sessionStorage.setItem('jwt', result.data.body.token);
+        localStorage.setItem('jwt', result.data.body.token);
         window.location.href='/';
       }
     } catch (error) {

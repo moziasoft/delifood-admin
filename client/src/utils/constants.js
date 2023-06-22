@@ -24,3 +24,97 @@ export const USER_TYPE_OPTIONS = [
   { label: 'Premium', value: 'premium' },
   { label: 'Simcode Family', value: 'family' },
 ]
+
+export const STATUS = {
+  0: 'Hiệu lực',
+  1: 'Đã xóa',
+  2: 'Chờ đợi'
+}
+
+export const STATUS_DATA = {
+  active: 0,
+  deleted: 1,
+  pending: 2
+}
+
+export const ROLE = {
+  superAdmin: 0,
+  admin: 1
+}
+
+export const S3_URL = "https://delifood.s3.ap-southeast-1.amazonaws.com"
+
+export const LIST_CITY = [
+  { label: 'Đồng Hới', value: 'Đồng Hới' },
+  { label: 'Ba Đồn', value: 'Ba Đồn' },
+  { label: 'Bố Trạch', value: 'Bố Trạch' },
+  { label: 'Quảng Ninh', value: 'Quảng Ninh' },
+  { label: 'Lệ Thủy', value: 'Lệ Thủy' },
+  { label: 'Quảng Trạch', value: 'Quảng Trạch' },
+  { label: 'Minh Hóa', value: 'Minh Hóa' },
+  { label: 'Tuyên Hóa', value: 'Tuyên Hóa' }
+]
+
+export const LIST_WARD = {
+  "Đồng Hới": [
+    { label: 'Hải Thành', value: 'Hải Thành' },
+    { label: 'Đồng Phú', value: 'Đồng Phú' },
+    { label: 'Bắc Lý', value: 'Bắc Lý' },
+    { label: 'Nam Lý', value: 'Nam Lý' },
+    { label: 'Đồng Hải', value: 'Đồng Hải' },
+    { label: 'Đồng Sơn', value: 'Đồng Sơn' },
+    { label: 'Phú Hải', value: 'Phú Hải' },
+    { label: 'Bắc Nghĩa', value: 'Bắc Nghĩa' },
+    { label: 'Đức Ninh Đông', value: 'Đức Ninh Đông' },
+    { label: 'Quang Phú', value: 'Quang Phú' },
+    { label: 'Lộc Ninh', value: 'Lộc Ninh' },
+    { label: 'Bảo Ninh', value: 'Bảo Ninh' },
+    { label: 'Nghĩa Ninh', value: 'Nghĩa Ninh' },
+    { label: 'Thuận Đức', value: 'Thuận Đức' },
+    { label: 'Đức Ninh', value: 'Đức Ninh' },
+  ],
+  "Ba Đồn": [
+    { label: 'Ba Đồn', value: 'Ba Đồn' },
+    { label: 'Quảng Long', value: 'Quảng Long' },
+    { label: 'Quảng Thọ', value: 'Quảng Thọ' },
+    { label: 'Quảng Tiên', value: 'Quảng Tiên' },
+    { label: 'Quảng Trung', value: 'Quảng Trung' },
+    { label: 'Quảng Phong', value: 'Quảng Phong' },
+    { label: 'Quảng Thuận', value: 'Quảng Thuận' },
+    { label: 'Quảng Tân', value: 'Quảng Tân' },
+    { label: 'Quảng Hải', value: 'Quảng Hải' },
+    { label: 'Quảng Sơn', value: 'Quảng Sơn' },
+    { label: 'Quảng Lộc', value: 'Quảng Lộc' },
+    { label: 'Quảng Thủy', value: 'Quảng Thủy' },
+    { label: 'Quảng Văn', value: 'Quảng Văn' },
+    { label: 'Quảng Phúc', value: 'Quảng Phúc' },
+    { label: 'Quảng Hòa', value: 'Quảng Hòa' },
+    { label: 'Quảng Minh', value: 'Quảng Minh' },
+  ],
+  "Bố Trạch": [],
+  "Quảng Ninh": [],
+  "Lệ Thủy": [],
+  "Quảng Trạch": [],
+  "Minh Hóa": [],
+  "Tuyên Hóa": []
+}
+
+export const TIME_OPEN_CLOSE_OPTIONS = () => {
+  const result = []
+  for (let i = 0; i < 24; i++) {
+    for (let j = 0; j < 2; j++) {
+      const h = i < 10 ? `0${i}` : `${i}`;
+      const m = j === 0 ? "00" : "30";
+      result.push({ label: `${h}:${m}`, value: `${h}:${m}` })
+    }
+  }
+  return result;
+}
+
+export const TIME_DELIVERY_OPTIONS = () => {
+  const result = []
+  for (let i = 1; i < 13; i++) {
+    result.push({ value: i * 5 * 60, label: `${i * 5} phút` })
+  }
+  return result;
+}

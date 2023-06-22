@@ -31,7 +31,7 @@ const Configuration = () => {
   }
 
   const handleChangeServerMaintainingStatus = () => {
-    const token = sessionStorage.getItem('jwt');
+    const token = localStorage.getItem('jwt');
     if (!token) {
       return window.location.href='/login';
     }

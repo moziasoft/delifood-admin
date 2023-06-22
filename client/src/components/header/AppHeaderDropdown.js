@@ -15,7 +15,7 @@ import avatar8 from './../../assets/images/avatars/8.png'
 
 const AppHeaderDropdown = () => {
   const handleLogout = () => {
-    sessionStorage.setItem('jwt', '');
+    localStorage.setItem('jwt', '');
     window.location.href='/login';
   }
 
