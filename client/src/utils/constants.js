@@ -4,7 +4,9 @@
 
 // DEV1
 export const API_ADMIN_URL = 'https://ndsnneeui1.execute-api.us-west-2.amazonaws.com/dev/ad_apis'
-export const API_URL = 'http://localhost:3000/api/v1'
+// export const HOST_URL = "http://13.215.203.204:3000"
+export const HOST_URL = "http://localhost:3000"
+export const API_URL = `${HOST_URL}/api/v1`
 
 export const HOST_THEORY = 'http://44.241.205.58:5000';
 
@@ -45,6 +47,7 @@ export const ROLE = {
 export const S3_URL = "https://delifood.s3.ap-southeast-1.amazonaws.com"
 
 export const LIST_CITY = [
+  { label: 'Chọn Huyện/Thành Phố', value: "" },
   { label: 'Đồng Hới', value: 'Đồng Hới' },
   { label: 'Ba Đồn', value: 'Ba Đồn' },
   { label: 'Bố Trạch', value: 'Bố Trạch' },
@@ -57,6 +60,7 @@ export const LIST_CITY = [
 
 export const LIST_WARD = {
   "Đồng Hới": [
+    { label: 'Chọn Phường/Xã', value: "" },
     { label: 'Hải Thành', value: 'Hải Thành' },
     { label: 'Đồng Phú', value: 'Đồng Phú' },
     { label: 'Bắc Lý', value: 'Bắc Lý' },
@@ -74,6 +78,7 @@ export const LIST_WARD = {
     { label: 'Đức Ninh', value: 'Đức Ninh' },
   ],
   "Ba Đồn": [
+    { label: 'Chọn Phường/Xã', value: "", disabled: true, selected: true },
     { label: 'Ba Đồn', value: 'Ba Đồn' },
     { label: 'Quảng Long', value: 'Quảng Long' },
     { label: 'Quảng Thọ', value: 'Quảng Thọ' },
@@ -91,16 +96,16 @@ export const LIST_WARD = {
     { label: 'Quảng Hòa', value: 'Quảng Hòa' },
     { label: 'Quảng Minh', value: 'Quảng Minh' },
   ],
-  "Bố Trạch": [],
-  "Quảng Ninh": [],
-  "Lệ Thủy": [],
-  "Quảng Trạch": [],
-  "Minh Hóa": [],
-  "Tuyên Hóa": []
+  "Bố Trạch": [{ label: 'Chọn Phường/Xã', value: "" },],
+  "Quảng Ninh": [{ label: 'Chọn Phường/Xã', value: "" },],
+  "Lệ Thủy": [{ label: 'Chọn Phường/Xã', value: "" },],
+  "Quảng Trạch": [{ label: 'Chọn Phường/Xã', value: "" },],
+  "Minh Hóa": [{ label: 'Chọn Phường/Xã', value: "" },],
+  "Tuyên Hóa": [{ label: 'Chọn Phường/Xã', value: "" },]
 }
 
-export const TIME_OPEN_CLOSE_OPTIONS = () => {
-  const result = []
+export const TIME_OPEN_CLOSE_OPTIONS = (init) => {
+  const result = [init]
   for (let i = 0; i < 24; i++) {
     for (let j = 0; j < 2; j++) {
       const h = i < 10 ? `0${i}` : `${i}`;
@@ -111,10 +116,15 @@ export const TIME_OPEN_CLOSE_OPTIONS = () => {
   return result;
 }
 
-export const TIME_DELIVERY_OPTIONS = () => {
-  const result = []
+export const TIME_DELIVERY_OPTIONS = (init) => {
+  const result = [init]
   for (let i = 1; i < 13; i++) {
     result.push({ value: i * 5 * 60, label: `${i * 5} phút` })
   }
   return result;
+}
+
+export const KEYWORD_TYPE = {
+  0: "Normal",
+  1: "Common"
 }

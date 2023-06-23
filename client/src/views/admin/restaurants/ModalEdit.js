@@ -183,7 +183,7 @@ const ModalEdit = (props) => {
                 defaultValue=""
                 required
                 name="startTime"
-                options={TIME_OPEN_CLOSE_OPTIONS()}
+                options={TIME_OPEN_CLOSE_OPTIONS({ label: 'Chọn thời gian mở cửa', value: "" })}
                 value={startTime}
                 onChange={(e) => {
                   setStartTime(e.target.value)
@@ -202,7 +202,7 @@ const ModalEdit = (props) => {
                 onChange={(e) => {
                   setEndTime(e.target.value)
                 }}
-                options={TIME_OPEN_CLOSE_OPTIONS()}
+                options={TIME_OPEN_CLOSE_OPTIONS({ label: 'Chọn thời gian đóng cửa', value: "" })}
               />
               <div className="invalid-feedback">Cần nhập thời gian đóng cửa</div>
             </CCol>
@@ -213,7 +213,7 @@ const ModalEdit = (props) => {
                 defaultValue=""
                 required
                 name="startTimeDelivery"
-                options={TIME_DELIVERY_OPTIONS()}
+                options={TIME_DELIVERY_OPTIONS({ label: 'Chọn thời gian giao hàng sớm nhất', value: "" })}
                 value={startTimeDelivery}
                 onChange={(e) => {
                   setStartTimeDelivery(e.target.value)
@@ -228,7 +228,7 @@ const ModalEdit = (props) => {
                 defaultValue=""
                 required
                 name="endTimeDelivery"
-                options={TIME_DELIVERY_OPTIONS()}
+                options={TIME_DELIVERY_OPTIONS({ label: 'Chọn thời gian giao hàng muộn nhất', value: "" })}
                 value={endTimeDelivery}
                 onChange={(e) => {
                   setEndTimeDelivery(e.target.value)

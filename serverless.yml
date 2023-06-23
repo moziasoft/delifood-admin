@@ -1,26 +1,31 @@
-service: stockcodeadmin
+service: deliveryadmin2
 
 provider:
     name: aws
     runtime: nodejs14.x
-    region: us-west-2
-
+    region: ap-southeast-1
+    profile: delifood
 plugins:
     - serverless-s3-sync
 
 custom:
-    bucketName: stockcode-admin
+    bucketName: deliveryfoodadmin2
+    blockPublicAccess: true
     s3Sync:
         - bucketName: ${self:custom.bucketName}
           localDir: client/build/
 
 resources:
     Resources:
-        ReactAppBucket:
+        DelifoodAdminBuc:
             Type: AWS::S3::Bucket
             Properties:
                 BucketName: ${self:custom.bucketName}
-                AccessControl: PublicRead
+                PublicAccessBlockConfiguration:
+                    BlockPublicAcls: false
+                OwnershipControls:
+                    Rules:
+                        - ObjectOwnership: ObjectWriter
                 WebsiteConfiguration:
                     IndexDocument: index.html
                     ErrorDocument: index.html
@@ -28,7 +33,7 @@ resources:
             Type: AWS::S3::BucketPolicy
             Properties:
                 Bucket:
-                    Ref: ReactAppBucket
+                    Ref: DelifoodAdminBuc
                 PolicyDocument:
                     Statement:
                         - Sid: PublicReadGetObject

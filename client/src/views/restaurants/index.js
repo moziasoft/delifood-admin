@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { CButton, CCol, CRow } from "@coreui/react";
 import ModalCreate from "./ModalCreate";
-import { API_URL, STATUS, STATUS_DATA } from "src/utils/constants";
+import { API_URL, HOST_URL, STATUS, STATUS_DATA } from "src/utils/constants";
 import { callApi } from "src/utils/requestHelper";
 import LoadingSpinner from "../base/spinners/LoadingSpinner";
 import moment from 'moment';
@@ -78,7 +78,7 @@ const Restaurants = () => {
             const res = await callApi(`${API_URL}/restaurant/preview/${id}`)
             if (res.status === 200) {
                 window.open(
-                    `http://localhost:3000/preview/${res.body}`,
+                    `${HOST_URL}/preview/${res.body}`,
                     '_blank'
                 );
             }
