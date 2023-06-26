@@ -4,7 +4,7 @@
 
 // DEV1
 export const API_ADMIN_URL = 'https://ndsnneeui1.execute-api.us-west-2.amazonaws.com/dev/ad_apis'
-// export const HOST_URL = "http://13.215.203.204:3000"
+// export const HOST_URL = "http://18.141.209.216:3000"
 export const HOST_URL = "http://localhost:3000"
 export const API_URL = `${HOST_URL}/api/v1`
 
@@ -32,6 +32,20 @@ export const STATUS = {
   1: 'Đã xóa',
   2: 'Chờ đợi'
 }
+
+export const STATUS_ORDER = {
+  0: "Đang chờ",
+  1: "Đang giao",
+  2: "Hoàn thành",
+  3: "Đã hủy"
+}
+
+export const STATUS_ORDER_DATA = [
+  { label: "Đang chờ xác nhận", value: 0 },
+  { label: "Giao hàng", value: 1 },
+  { label: "Hoàn thành", value: 2 },
+  { label: "Hủy", value: 3 },
+]
 
 export const STATUS_DATA = {
   active: 0,
